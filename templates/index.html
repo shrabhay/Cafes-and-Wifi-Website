@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cafes & Wifi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="p-5 text-center rounded-3">
+            <h1 class="text-body-emphasis">Cafés and Wifi</h1>
+        </div>
+    </div>
+
+    <div class="d-flex gap-2 justify-content-center py-5">
+        <a href="{{ url_for('get_random_cafe') }}" class="btn btn-light rounded-pill px-3" role="button">Random Cafe</a>
+        <a href="{{ url_for('get_cafes_at_location') }}" class="btn btn-dark rounded-pill px-3" role="button">Search
+          Cafés by Location</a>
+        <a href="{{ url_for('add_new_cafe') }}" class="btn btn-light rounded-pill px-3" role="button">Add New Cafe</a>
+    </div>
+
+
+    <table class="table" style="padding-left: 20px; padding-right: 20px;">
+      <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Image</th>
+            <th scope="col">Power Sockets</th>
+            <th scope="col">Toilets</th>
+            <th scope="col">Wifi</th>
+            <th scope="col">Voice Call Network</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Coffee Price</th>
+            <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for cafe in cafes %}
+        <tr>
+            <td>{{ cafe[1] }}</td>
+            <td><a href="{{ cafe[2] }}">{{ cafe[4] }}</a></td>
+            <td><a href="{{ cafe[3] }}"><img src="{{ cafe[3] }}" width="200" alt="{{ cafe[1] }} image"></a></td>
+            <td>{{ 'Yes' if cafe[5] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[6] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[7] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[8] == 1 else 'No' }}</td>
+            <td>{{ cafe[9] }}</td>
+            <td>{{ cafe[10] }}</td>
+            <td>
+                <p><a href="{{ url_for('edit_cafe', cafe_id=cafe[0]) }}">Edit</a></p>
+                <p><a href="{{ url_for('delete_cafe', cafe_id=cafe[0]) }}">Delete</a></p>
+            </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="container my-5">
+        <div class="p-5 text-center rounded-3">
+            <h1 class="text-body-emphasis"><a href="https://documenter.getpostman.com/view/13552429/2sAY51916F">API
+                Documentation</a></h1>
+        </div>
+    </div>
+</body>
+</html>

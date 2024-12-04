@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random Cafe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container my-5">
+        <div class="p-5 text-center rounded-3">
+            <h1 class="text-body-emphasis">Random Cafe</h1>
+        </div>
+    </div>
+
+    <table class="table" style="padding-left: 20px; padding-right: 20px;">
+      <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Location</th>
+            <th scope="col">Image</th>
+            <th scope="col">Power Sockets</th>
+            <th scope="col">Toilets</th>
+            <th scope="col">Wifi</th>
+            <th scope="col">Voice Call Network</th>
+            <th scope="col">Seats</th>
+            <th scope="col">Coffee Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+            <td>{{ cafe[1] }}</td>
+            <td><a href="{{ cafe[2] }}">{{ cafe[4] }}</a></td>
+            <td><a href="{{ cafe[3] }}"><img src="{{ cafe[3] }}" width="200" alt="{{ cafe[1] }} image"></a></td>
+            <td>{{ 'Yes' if cafe[5] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[6] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[7] == 1 else 'No' }}</td>
+            <td>{{ 'Yes' if cafe[8] == 1 else 'No' }}</td>
+            <td>{{ cafe[9] }}</td>
+            <td>{{ cafe[10] }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <a href="{{ url_for('home') }}" class="btn btn-primary rounded-pill px-3" role="button">Go Home</a>
+
+</body>
+</html>
