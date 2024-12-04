@@ -3,9 +3,13 @@ import sqlite3
 import random
 from flask_bootstrap import Bootstrap5
 from forms import AddNewCafe, SearchCafeForm, EditCafe
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'qwertyuiop'
+app.config['SECRET_KEY'] = os.getenv('Flask_Secret_Key')
 bootstrap = Bootstrap5(app)
 
 db = sqlite3.connect('cafes.db')
